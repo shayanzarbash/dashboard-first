@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .rc-table-custom table {
+    width: 100%;
+  }
+
+  li.js-li {
+    display: inline-block;
+    padding: 7px;
+    font-size: 18px;
+  }
+
+  li.js-li.active {
+    color: white;
+    font-weight: 700;
+    background: purple;
+    border-radius: 6px;
+  }
+
+  ul.js-ul {
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  .pure-modal .panel-heading {
+    @apply bg-purple-600!important;
+  }
+
+  p.product-title {
+    margin-top: 0px !important;
+  }
+}
+
+#pagination {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+#pagination span {
+  cursor: pointer;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+}
+
+.Drop-down {
+  float: left;
+}
+
+.line-border {
+  border-bottom: 1px solid #000;
+  padding-bottom: 10px;
+}
+.line-border:nth-last-child() {
+  border-bottom: none;
+}
