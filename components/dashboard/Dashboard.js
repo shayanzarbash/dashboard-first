@@ -69,6 +69,7 @@ const Dashboard = () => {
 
   const handleInputChange = (event) => {
     const { value } = event.target;
+    console.log(value);
     setSearchTerm(value);
     filterData(value);
     if (value === '') {
@@ -83,6 +84,12 @@ const Dashboard = () => {
       item.last_name.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setTableData(filteredData);
+  };
+
+  const handleClick = ([...num]) => {
+    // console.log('argument from Child: ', num);
+    setSearchTerm(num[0].first_name);
+    filterData(num[0].first_name);
   };
 
   return (
@@ -125,7 +132,7 @@ const Dashboard = () => {
                 </svg>
                 Filter
               </button>
-              <Modal modal={modal} setModal={setModal} />
+              <Modal modal={modal} setModal={setModal} handleClick={handleClick} />
             </div>
           </div>
           <div className="overflow-y-auto">

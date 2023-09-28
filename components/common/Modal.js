@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
 
-const Modal = ({ modal, setModal }) => {
+const Modal = ({ modal, setModal, handleClick }) => {
+
+  // console.log("jj", handleClick);
+
 
   const [inputFields, setInputFields] = useState([
-    { id: '', name: '', lastname: '', email: '' }
+    { id: '', email: '', first_name: '', last_name: '' }
   ]);
 
   const handleInputChange = (event, index) => {
@@ -15,7 +18,7 @@ const Modal = ({ modal, setModal }) => {
     list[index][name] = value;
     setInputFields(list);
     console.log(list)
-    setTableData(list);
+    // setTableData(list);
   };
 
   const handleRemoveClick = index => {
@@ -25,7 +28,7 @@ const Modal = ({ modal, setModal }) => {
   };
 
   const addFields = () => {
-    let newfield = { id: '', name: '', lastname: '', email: '' }
+    let newfield = { id: '', email: '', first_name: '', last_name: '' }
     setInputFields([...inputFields, newfield])
   };
 
@@ -59,18 +62,18 @@ const Modal = ({ modal, setModal }) => {
                     />
                     <input
                       type="text"
-                      name="name"
+                      name="first_name"
                       className="mr-2 block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="name"
-                      value={item.name}
+                      value={item.first_name}
                       onChange={e => handleInputChange(e, index)}
                     />
                     <input
                       type="text"
-                      name="lastname"
+                      name="last_name"
                       className="mr-2 block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       placeholder="lastname"
-                      value={item.lastname}
+                      value={item.last_name}
                       onChange={e => handleInputChange(e, index)}
                     />
                     <input
@@ -82,17 +85,22 @@ const Modal = ({ modal, setModal }) => {
                       onChange={e => handleInputChange(e, index)}
                     />
                     <div className="flex">
-                      {inputFields.length !== 1 && <button
-                        className="nline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-3"
-                        onClick={() => handleRemoveClick(index)}>
-                        ×
-                      </button>}
-                      {inputFields.length - 1 === index && <button
-                        className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-4"
-                        onClick={addFields}
-                      >
-                        +
-                      </button>}
+                      {inputFields.length !== 1 ? (
+                        <button
+                          className="nline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-3"
+                          onClick={() => handleRemoveClick(index)}>
+                          ×
+                        </button>
+                      ) : (<div className="w-16"></div>)
+                      }
+                      {inputFields.length - 1 === index ? (
+                        <button
+                          className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-4"
+                          onClick={addFields}
+                        >
+                          +
+                        </button>
+                      ) : (<div className="w-16"></div>)}
                     </div>
                   </div>
                 )
@@ -100,7 +108,10 @@ const Modal = ({ modal, setModal }) => {
             </div>
           </div>
           <div className="flex justify-between">
-            <button className="bg-gray-700 text-white p-3 w-full mt-5 text-lg">Filter</button>
+            <button onClick={() => handleClick(inputFields)}
+              className="bg-gray-700 text-white p-3 w-full mt-5 text-lg">
+              Filter
+            </button>
           </div>
         </div>
       </PureModal>
