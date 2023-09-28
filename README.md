@@ -1,8 +1,7 @@
 
 # توضیحات پنل کاربران : 
-1##- جستجو بر اساس نام کاریران 
-2##- صفحه بندی بر اساس تعداد کاربران
-3##- تغییر سطر بندی کاربران از یک تا شش ستون
+## 1-جستجو بر اساس نام کاریران
+
 
 
 ## Simple NextJs Tailwind Admin Panel for starting background panel. you can add extra feature like as modal or other features.
